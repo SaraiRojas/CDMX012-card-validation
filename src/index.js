@@ -12,18 +12,8 @@ cardNum.addEventListener('change', keepNum);
 
 
 function keepNum(e) {
-    nums = e.target.value.replace(/\s+/g, ''); /*Delate empty spaces*/ /*typeof num = string*/
+    nums = e.target.value.replace(/\s/g, ''); /*Delate empty spaces*/ /*typeof num = string*/
 }
-
-//Gets numbers as typing
-/*
-
-cardNum.addEventListener('keyup', masking);
-
-function masking (e) {
-    cardNum.value = validator.maskify(e.target.value);
-
-}; */
 
 //Shows if the card number is valid or not 
 validate.addEventListener('click', showAnswer);
