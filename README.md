@@ -16,7 +16,7 @@ This project consists of a web application that allows users to validate a credi
 ## 2. Final project image
 
 <img src="images\Final project image.PNG"/>
-<p align="center"><strong>Figure 1.</strong> Web design sketch</p>
+<p align="center"><strong>Figure 1.</strong> Final project image</p>
 <br/>
 
 ## 3. UX research
