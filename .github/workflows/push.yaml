@@ -26,3 +26,9 @@ jobs:
     steps:
       - name: Unique
         run: echo "Already in main"
+      - name: content
+        run: ls -al
+      - name: Action
+        run: actions/checkout@v4
+      - name: content
+        run: ls -al
