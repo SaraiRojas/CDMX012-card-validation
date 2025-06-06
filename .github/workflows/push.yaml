@@ -14,6 +14,7 @@ jobs:
         run: echo "You are pushing to main directly"
 
   Changes-already-in-main:
+    needs: push_main
     runs-on: ubuntu-latest
     steps:
       - name: Unique
