@@ -1,0 +1,12 @@
+name: "Push to main"
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  push-main:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Push to main"
+      - run: echo "You are pushing to main directly"
