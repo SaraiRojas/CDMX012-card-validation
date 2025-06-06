@@ -7,11 +7,17 @@ on:
 jobs:
   push-main:
     runs-on: ubuntu-latest
+
+    env:
+      NAME: Sarai_Rojas
+
     steps:
       - name: First
         run: echo "Push to main"
       - name: Second
         run: echo "You are pushing to main directly"
+      - name: Third
+        run: echo "By $NAME"
 
   Changes-already-in-main:
     if: ${{github.ref == 'refs/heads/main'}}
