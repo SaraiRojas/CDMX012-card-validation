@@ -29,6 +29,6 @@ jobs:
       - name: content
         run: ls -al
       - name: Action
-        run: actions/checkout@v4
+        uses: actions/checkout@v4
       - name: content
         run: ls -al
