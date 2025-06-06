@@ -12,3 +12,9 @@ jobs:
         run: echo "Push to main"
       - name: Second
         run: echo "You are pushing to main directly"
+
+  Changes-already-in-main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Unique
+        run: echo "Already in main"
