@@ -8,5 +8,7 @@ jobs:
   push-main:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Push to main"
-      - run: echo "You are pushing to main directly"
+      - name: First
+        run: echo "Push to main"
+      - name: Second
+        run: echo "You are pushing to main directly"
