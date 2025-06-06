@@ -13,9 +13,10 @@ jobs:
 
     steps:
       - name: First
-        run: echo "Push to main"
+        id: step_1
+        run: echo "MY_ACTION=Push to main" >> $GITHUB_OUTPUT
       - name: Second
-        run: echo "You are pushing to main directly"
+        run: echo "You have $${{steps.step_1.outputs.MY_ACTION}} directly"
       - name: Third
         run: echo "By $NAME"
 
