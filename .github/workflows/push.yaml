@@ -11,12 +11,15 @@ jobs:
     env:
       NAME: Sarai_Rojas
 
+    outputs:
+      value_1: 292929
+
     steps:
       - name: First
         id: step_1
-        run: echo "MY_ACTION=Push to main" >> $GITHUB_OUTPUT
+        run: echo "MY_ACTION=Pushed to main" >> $GITHUB_OUTPUT
       - name: Second
-        run: echo "You have $${{steps.step_1.outputs.MY_ACTION}} directly"
+        run: echo "You have ${{steps.step_1.outputs.MY_ACTION}} directly"
       - name: Third
         run: echo "By $NAME"
 
@@ -24,9 +27,12 @@ jobs:
     if: ${{github.ref == 'refs/heads/main'}}
     needs: push-main
     runs-on: ubuntu-latest
+
+    env:
+      SALIDA: ${{needs.push-main.outputs.value_1}}
     steps:
       - name: Unique
-        run: echo "Already in main"
+        run: echo "Already in main - $SALIDA"
       - name: content
         run: ls -al
       - name: Action
