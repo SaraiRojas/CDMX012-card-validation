@@ -21,7 +21,13 @@ jobs:
       - name: Second
         run: echo "You have ${{steps.step_1.outputs.MY_ACTION}} directly"
       - name: Third
-        run: echo "By $NAME"
+        run: |
+          echo "By $NAME" >> test.log
+      - name: Fourth
+        uses: actions/upload-artifact@v4
+        with:
+          name: archivo-test
+          path: test.log
 
   Changes-already-in-main:
     if: ${{github.ref == 'refs/heads/main'}}
