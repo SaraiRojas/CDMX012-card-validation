@@ -37,6 +37,13 @@ jobs:
     env:
       SALIDA: ${{needs.push-main.outputs.value_1}}
     steps:
+      - name: Descargar artefacto
+        uses: actions/download-artifact@4v
+        with:
+          name: archivo-test
+      - name: Artifact contents
+        run: cat test.log
+
       - name: Unique
         run: echo "Already in main - $SALIDA"
       - name: content
