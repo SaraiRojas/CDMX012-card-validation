@@ -52,4 +52,4 @@ jobs:
 
     steps:
       - name: Ready
-      - run: cat "Done"
+        run: echo "Done"
