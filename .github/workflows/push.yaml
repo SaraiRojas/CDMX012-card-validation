@@ -5,7 +5,7 @@ on:
     branches: ["main"]
 
 jobs:
-  push-main:
+  Deploy:
     runs-on: ubuntu-latest
 
     env:
@@ -14,41 +14,53 @@ jobs:
     outputs:
       value_1: 292929
 
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy-page.outputs.page_url }}
+
     steps:
-      - name: First
-        id: step_1
-        run: echo "MY_ACTION=Pushed to main" >> $GITHUB_OUTPUT
-      - name: Second
-        run: echo "You have ${{steps.step_1.outputs.MY_ACTION}} directly"
-      - name: Third
-        run: |
-          echo "By $NAME" >> test.log
-      - name: Fourth
-        uses: actions/upload-artifact@v4
-        with:
-          name: archivo-test
-          path: test.log
+      - name: Deploy
+        id: deploy-page
+        uses: actions/deploy-pages@v4
 
-  Changes-already-in-main:
-    if: ${{github.ref == 'refs/heads/main'}}
-    needs: push-main
-    runs-on: ubuntu-latest
+  #     - name: First
+  #       id: step_1
+  #       run: echo "MY_ACTION=Pushed to main" >> $GITHUB_OUTPUT
+  #     - name: Second
+  #       run: echo "You have ${{steps.step_1.outputs.MY_ACTION}} directly"
+  #     - name: Third
+  #       run: |
+  #         echo "By $NAME" >> test.log
+  #     - name: Fourth
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: archivo-test
+  #         path: test.log
 
-    env:
-      SALIDA: ${{needs.push-main.outputs.value_1}}
-    steps:
-      - name: Descargar artefacto
-        uses: actions/download-artifact@v4
-        with:
-          name: archivo-test
-      - name: Artifact contents
-        run: cat test.log
+  # Changes-already-in-main:
+  #   if: ${{github.ref == 'refs/heads/main'}}
+  #   needs: push-main
+  #   runs-on: ubuntu-latest
 
-      - name: Unique
-        run: echo "Already in main - $SALIDA"
-      - name: content
-        run: ls -al
-      - name: Action
-        uses: actions/checkout@v4
-      - name: content
-        run: ls -al
+  #   env:
+  #     SALIDA: ${{needs.push-main.outputs.value_1}}
+  #   steps:
+  #     - name: Descargar artefacto
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: archivo-test
+  #     - name: Artifact contents
+  #       run: cat test.log
+
+  #     - name: Unique
+  #       run: echo "Already in main - $SALIDA"
+  #     - name: content
+  #       run: ls -al
+  #     - name: Action
+  #       uses: actions/checkout@v4
+  #     - name: content
+  #       run: ls -al
